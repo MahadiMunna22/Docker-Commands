@@ -1,8 +1,8 @@
 # Docker Commands
 
 ### dockerFile
+_NodeJS DockerFile_
 ```
-// NodeJS DockerFile
 FROM node:17-alpine
 RUN npm install -g nodemon
 WORKDIR /app
@@ -12,8 +12,8 @@ COPY . .
 EXPOSE 4000 /* required for docker desktop port mapping */
 CMD ["npm", "run", "dev"]
 ```
+_ReactJS DockerFile_
 ```
-// ReactJS DockerFile
 FROM node:16-alpine
 WORKDIR /app
 COPY package.json .
@@ -25,35 +25,51 @@ CMD ["npm", "start"]
 
 ## Image
 ### Build Image
-```docker build -t myApp```
+```
+docker build -t myApp
+```
 ### List Image
-```docker images```
+```
+docker images
+```
 ### Delete Image
 ```
 docker image rm myApp
+```
+```
 docker image rm myApp -f
 ```
 ## Container
 ### Build Container
 ```
 docker run —name myApp_C -p 4000:4000 -d myApp
+```
+```
 docker run —name myApp_C -p 4000:4000 --rm -v [absolute path] -d myApp
 ```
 ### Run Existing Container
-```docker start myApp_C```
+```
+docker start myApp_C
+```
 ### List Container
-```docker ps -a```
+```
+docker ps -a
+```
 ### Delete Container
-```docker container rm myApp_C myApp_C1```
+```
+docker container rm myApp_C myApp_C1
+```
 
 ### Delete Everything
-```docker system prune -a```
+```
+docker system prune -a
+```
 
 ## Docker Compose
 * Create file “docker-compose.yaml”
 * Write docker commands
-* Run “docker-compose up” to start building and creating image & containers
-* Run “docker-compose down” to stop the server
+* Run ```docker-compose up``` to start building and creating image & containers
+* Run ```docker-compose down``` to stop the server
 
 ### docker-compose.yaml
 ```
